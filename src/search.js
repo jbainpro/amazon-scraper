@@ -3,7 +3,7 @@ import fixText from "./fixtext";
 export default async function searchProducts(query, host) {
   const searchQuery = query.replace(/%20/gi, "+");
   const searchRes = await (
-    await fetch(`https://www.amazon.in/s?k=${searchQuery}`)
+    await fetch(`https://www.amazon.com/s?k=${searchQuery}`)
   ).text();
 
   var all_product = searchRes.split(
@@ -124,7 +124,7 @@ export default async function searchProducts(query, host) {
                 .trim()
             ),
             product_link,
-            query_url: product_link.replace("www.amazon.in", host + "/product"),
+            query_url: product_link.replace("www.amazon.com", host + "/product"),
           });
         }
       } catch (err) {}
@@ -136,7 +136,7 @@ export default async function searchProducts(query, host) {
       status: true,
       total_result: result.length,
       query: searchQuery,
-      fetch_from: `https://www.amazon.in/s?k=${searchQuery}`,
+      fetch_from: `https://www.amazon.com/s?k=${searchQuery}`,
       result,
     },
     null,
